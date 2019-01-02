@@ -1,0 +1,43 @@
+{
+  "name": "polymath-core-artifacts",
+  "version": "0.0.0",
+  "engines": {
+    "node": ">=6.12"
+  },
+  "description": "Polymath smart contract compilation artifacts",
+  "main": "lib/src/index.js",
+  "license": "MIT",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "yarn tsc -b",
+    "build:ci": "yarn build",
+    "clean": "shx rm -rf lib",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PolymathNetwork/polymath-core-artifacts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PolymathNetwork/polymath-core-artifacts/issues"
+  },
+  "homepage": "https://github.com/PolymathNetwork/polymath-core-artifacts/blob/master/README.md",
+  "keywords": [
+    "polymath",
+    "artifacts",
+    "json",
+    "abi",
+    "javascript",
+    "typescript"
+  ],
+  "devDependencies": {
+    "semantic-release": "^15.13.2",
+    "shx": "^0.2.2",
+    "typescript": "3.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

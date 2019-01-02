@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "rootDir": ".",
+    "resolveJsonModule": true
+  },
+  "include": ["./src/**/*"],
+  "files": [
+    "./artifacts/CappedSTO.json",
+    "./artifacts/CappedSTOFactory.json",
+    "./artifacts/ERC20DividendCheckpoint.json",
+    "./artifacts/EtherDividendCheckpoint.json",
+    "./artifacts/FeatureRegistry.json",
+    "./artifacts/GeneralPermissionManager.json",
+    "./artifacts/GeneralTransferManager.json",
+    "./artifacts/IModule.json",
+    "./artifacts/ISTO.json",
+    "./artifacts/ITransferManager.json",
+    "./artifacts/ManualApprovalTransferManager.json",
+    "./artifacts/ModuleFactory.json",
+    "./artifacts/ModuleRegistry.json",
+    "./artifacts/Ownable.json",
+    "./artifacts/PolymathRegistry.json",
+    "./artifacts/PolyToken.json",
+    "./artifacts/PolyTokenFaucet.json",
+    "./artifacts/SecurityToken.json",
+    "./artifacts/SecurityTokenRegistry.json",
+    "./artifacts/USDTieredSTO.json",
+    "./artifacts/USDTieredSTOFactory.json"
+  ]
+}
