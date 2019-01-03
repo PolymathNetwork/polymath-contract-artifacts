@@ -14,7 +14,7 @@
     "build": "yarn tsc -b",
     "build:ci": "yarn build",
     "clean": "shx rm -rf lib",
-    "postinstall": "yarn clean && yarn build:ci"
+    "postinstall": "yarn build:ci"
   },
   "repository": {
     "type": "git",
