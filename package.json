@@ -14,7 +14,7 @@
     "build": "yarn tsc -b",
     "build:ci": "yarn build",
     "clean": "shx rm -rf lib",
-    "semantic-release": "semantic-release"
+    "postinstall": "yarn clean && yarn build:ci"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,6 @@
     "typescript"
   ],
   "devDependencies": {
-    "semantic-release": "^15.13.2",
     "shx": "^0.2.2",
     "typescript": "3.0.1"
   },
