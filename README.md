@@ -1,4 +1,4 @@
-## @polymath-core-artifacts
+## polymath-core-artifacts
 
 Smart contract compilation artifacts for Polymath v2.1.0.
 
