@@ -2320,66 +2320,7 @@
     "name": "solc",
     "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
-  "networks": {
-    "15": {
-      "events": {
-        "0x685cb9667751e0a0d68e0ab5e737963ad9d2c743b0191f9aedfe037e723db0ad": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "_nameKey",
-              "type": "string"
-            },
-            {
-              "indexed": true,
-              "name": "_oldAddress",
-              "type": "address"
-            },
-            {
-              "indexed": true,
-              "name": "_newAddress",
-              "type": "address"
-            }
-          ],
-          "name": "ChangeAddress",
-          "type": "event"
-        },
-        "0xf8df31144d9c2f0f6b59d69b8b98abd5459d07f2742c4df920b25aae33c64820": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": true,
-              "name": "previousOwner",
-              "type": "address"
-            }
-          ],
-          "name": "OwnershipRenounced",
-          "type": "event"
-        },
-        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": true,
-              "name": "previousOwner",
-              "type": "address"
-            },
-            {
-              "indexed": true,
-              "name": "newOwner",
-              "type": "address"
-            }
-          ],
-          "name": "OwnershipTransferred",
-          "type": "event"
-        }
-      },
-      "links": {},
-      "address": "0x0f3da9b8682a6054300b8c78a0eca5e79d506380",
-      "transactionHash": "0x681333e5dc83272deb016b6770fcadd84eb2edd38a1838be1b67120b7ca264f9"
-    }
-  },
+  "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2019-01-07T17:35:18.906Z"
+  "updatedAt": "2019-01-08T14:32:00.977Z"
 }
