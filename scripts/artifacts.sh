@@ -19,4 +19,4 @@ do cp "build/contracts/$file" "$PATH_CONTRACT_ARTIFACTS/artifacts";
 done
 cd $PATH_CONTRACT_ARTIFACTS
 yarn clean && yarn build:ci
-git add --all && git commit -m "$3" && git tag -a $2 -m $3 && git push origin $2
+git add --all && git commit -m "$3" && git tag -a $2 -m "$3" && git push origin $2
