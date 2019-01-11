@@ -6,7 +6,7 @@
   },
   "description": "Polymath smart contract compilation artifacts",
   "main": "lib/src/index.js",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "directories": {
     "test": "test"
   },

@@ -8,6 +8,8 @@ PATH_CONTRACT_ARTIFACTS="/Users/polymath/polymath-contract-artifacts"
 
 # define absolute path to polymath-abi-wrappers if you want automate the json to ts transformation
 PATH_ABI_WRAPPERS="/Users/polymath/polymath-abi-wrappers"
+# define absolute path to polymath-contract-wrappers if you want update polymath packages
+PATH_CONTRACT_WRAPPERS="/Users/polymath/polymath-contract-wrappers"
 
 # params validation
 if [[ -z "$1" ]]; then
@@ -42,9 +44,11 @@ git add --all && git commit -m "$3" && git push origin master && git tag -a $2 -
 
 echo "\nArtifacts successfully updated..."
 
-# start abi to ts generator process if user want it
+# start subsequent process if user want it
 if [[ -n "$4" ]]; then
   echo "\nStarting polymath-abi-wrappers process..."
   cd $PATH_ABI_WRAPPERS
   sh scripts/generator.sh $2
+  cd $PATH_CONTRACT_WRAPPERS
+  sh scripts/updater.sh $2
 fi
