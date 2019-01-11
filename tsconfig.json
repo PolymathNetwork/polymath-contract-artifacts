@@ -9,7 +9,6 @@
     "pretty": true,
     "skipLibCheck": true,
     "strict": true,
-    "composite": true,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
