@@ -1,6 +1,6 @@
 {
   "name": "@polymathnetwork/contract-artifacts",
-  "version": "2.1.0-beta",
+  "version": "2.1.0-beta.1",
   "engines": {
     "node": ">=6.12"
   },
