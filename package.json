@@ -1,5 +1,5 @@
 {
-  "name": "@polymathnetwork/polymath-contract-artifacts",
+  "name": "@polymathnetwork/contract-artifacts",
   "version": "2.1.0-beta",
   "engines": {
     "node": ">=6.12"
