@@ -1,23 +1,23 @@
-## polymath-core-artifacts
+## @polymathnetwork/contract-artifacts
 
-Smart contract compilation artifacts for Polymath v2.1.0.
+Smart contract compilation artifacts for Polymath v2.1.0
 
 ## Installation
 
 ```bash
-yarn add polymath-core-artifacts
+yarn add @polymathnetwork/contract-artifacts
 ```
 
 **Import**
 
 ```typescript
-import * as artifacts from 'polymath-core-artifacts';
+import * as artifacts from '@polymathnetwork/contract-artifacts';
 ```
 
 or
 
 ```javascript
-var artifacts = require('polymath-core-artifacts');
+var artifacts = require('@polymathnetwork/contract-artifacts');
 ```
 
 ## Contributing
@@ -50,10 +50,4 @@ yarn build
 
 ```bash
 yarn clean
-```
-
-### Lint
-
-```bash
-yarn lint
 ```
