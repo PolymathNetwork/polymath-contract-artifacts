@@ -45,9 +45,3 @@ To build this package run the following from root directory:
 ```bash
 yarn build
 ```
-
-### Clean
-
-```bash
-yarn clean
-```
