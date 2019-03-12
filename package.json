@@ -1,6 +1,6 @@
 {
   "name": "@polymathnetwork/contract-artifacts",
-  "version": "2.1.0-beta.1",
+  "version": "2.1.0-beta.2",
   "engines": {
     "node": ">=6.12"
   },
@@ -15,9 +15,8 @@
     "test": "test"
   },
   "scripts": {
-    "build": "yarn tsc -b",
-    "build:ci": "yarn build",
-    "clean": "shx rm -rf lib"
+    "clean": "shx rm -rf lib",
+    "build": "yarn clean && yarn tsc -b"
   },
   "repository": {
     "type": "git",
