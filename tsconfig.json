@@ -38,6 +38,7 @@
     "./artifacts/SecurityToken.json",
     "./artifacts/SecurityTokenRegistry.json",
     "./artifacts/USDTieredSTO.json",
-    "./artifacts/USDTieredSTOFactory.json"
+    "./artifacts/USDTieredSTOFactory.json",
+    "./artifacts/Module.json",
   ]
 }

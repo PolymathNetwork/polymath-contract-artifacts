@@ -20,6 +20,7 @@ import * as SecurityToken from '../artifacts/SecurityToken.json';
 import * as SecurityTokenRegistry from '../artifacts/SecurityTokenRegistry.json';
 import * as USDTieredSTO from '../artifacts/USDTieredSTO.json';
 import * as USDTieredSTOFactory from '../artifacts/USDTieredSTOFactory.json';
+import * as Module from '../artifacts/Module.json';
 
 export {
   CappedSTO,
@@ -43,5 +44,6 @@ export {
   SecurityToken,
   SecurityTokenRegistry,
   USDTieredSTO,
-  USDTieredSTOFactory
+  USDTieredSTOFactory,
+  Module,
 };
