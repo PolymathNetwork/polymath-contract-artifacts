@@ -21,5 +21,8 @@ import * as SecurityTokenRegistry from '../artifacts/SecurityTokenRegistry.json'
 import * as USDTieredSTO from '../artifacts/USDTieredSTO.json';
 import * as USDTieredSTOFactory from '../artifacts/USDTieredSTOFactory.json';
 import * as Module from '../artifacts/Module.json';
-export { CappedSTO, CappedSTOFactory, DetailedERC20, ERC20DividendCheckpoint, EtherDividendCheckpoint, FeatureRegistry, GeneralPermissionManager, GeneralTransferManager, IModule, ISTO, ITransferManager, ManualApprovalTransferManager, ModuleFactory, ModuleRegistry, Ownable, PolymathRegistry, PolyToken, PolyTokenFaucet, SecurityToken, SecurityTokenRegistry, USDTieredSTO, USDTieredSTOFactory, Module, };
+import * as DividendCheckpoint from '../artifacts/DividendCheckpoint.json';
+import * as Pausable from '../artifacts/Pausable.json';
+import * as STO from '../artifacts/STO.json';
+export { CappedSTO, CappedSTOFactory, DetailedERC20, ERC20DividendCheckpoint, EtherDividendCheckpoint, FeatureRegistry, GeneralPermissionManager, GeneralTransferManager, IModule, ISTO, ITransferManager, ManualApprovalTransferManager, ModuleFactory, ModuleRegistry, Ownable, PolymathRegistry, PolyToken, PolyTokenFaucet, SecurityToken, SecurityTokenRegistry, USDTieredSTO, USDTieredSTOFactory, Module, DividendCheckpoint, Pausable, STO };
 //# sourceMappingURL=index.d.ts.map

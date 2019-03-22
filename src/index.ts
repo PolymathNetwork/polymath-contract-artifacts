@@ -21,6 +21,9 @@ import * as SecurityTokenRegistry from '../artifacts/SecurityTokenRegistry.json'
 import * as USDTieredSTO from '../artifacts/USDTieredSTO.json';
 import * as USDTieredSTOFactory from '../artifacts/USDTieredSTOFactory.json';
 import * as Module from '../artifacts/Module.json';
+import * as DividendCheckpoint from '../artifacts/DividendCheckpoint.json';
+import * as Pausable from '../artifacts/Pausable.json';
+import * as STO from '../artifacts/STO.json';
 
 export {
   CappedSTO,
@@ -46,4 +49,7 @@ export {
   USDTieredSTO,
   USDTieredSTOFactory,
   Module,
+  DividendCheckpoint,
+  Pausable,
+  STO
 };
