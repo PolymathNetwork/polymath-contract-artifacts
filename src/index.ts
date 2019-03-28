@@ -24,6 +24,8 @@ import * as Module from '../artifacts/Module.json';
 import * as DividendCheckpoint from '../artifacts/DividendCheckpoint.json';
 import * as Pausable from '../artifacts/Pausable.json';
 import * as STO from '../artifacts/STO.json';
+import * as CountTransferManager from '../artifacts/CountTransferManager.json';
+import * as PercentageTransferManager from '../artifacts/PercentageTransferManager.json';
 
 export {
   CappedSTO,
@@ -51,5 +53,7 @@ export {
   Module,
   DividendCheckpoint,
   Pausable,
-  STO
+  STO,
+  CountTransferManager,
+  PercentageTransferManager
 };
