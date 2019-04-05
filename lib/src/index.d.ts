@@ -26,5 +26,6 @@ import * as Pausable from '../artifacts/Pausable.json';
 import * as STO from '../artifacts/STO.json';
 import * as CountTransferManager from '../artifacts/CountTransferManager.json';
 import * as PercentageTransferManager from '../artifacts/PercentageTransferManager.json';
-export { CappedSTO, CappedSTOFactory, DetailedERC20, ERC20DividendCheckpoint, EtherDividendCheckpoint, FeatureRegistry, GeneralPermissionManager, GeneralTransferManager, IModule, ISTO, ITransferManager, ManualApprovalTransferManager, ModuleFactory, ModuleRegistry, Ownable, PolymathRegistry, PolyToken, PolyTokenFaucet, SecurityToken, SecurityTokenRegistry, USDTieredSTO, USDTieredSTOFactory, Module, DividendCheckpoint, Pausable, STO, CountTransferManager, PercentageTransferManager };
+import * as VolumeRestrictionTransferManager from '../artifacts/VolumeRestrictionTM.json';
+export { CappedSTO, CappedSTOFactory, DetailedERC20, ERC20DividendCheckpoint, EtherDividendCheckpoint, FeatureRegistry, GeneralPermissionManager, GeneralTransferManager, IModule, ISTO, ITransferManager, ManualApprovalTransferManager, ModuleFactory, ModuleRegistry, Ownable, PolymathRegistry, PolyToken, PolyTokenFaucet, SecurityToken, SecurityTokenRegistry, USDTieredSTO, USDTieredSTOFactory, Module, DividendCheckpoint, Pausable, STO, CountTransferManager, PercentageTransferManager, VolumeRestrictionTransferManager };
 //# sourceMappingURL=index.d.ts.map

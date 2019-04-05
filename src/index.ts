@@ -26,6 +26,7 @@ import * as Pausable from '../artifacts/Pausable.json';
 import * as STO from '../artifacts/STO.json';
 import * as CountTransferManager from '../artifacts/CountTransferManager.json';
 import * as PercentageTransferManager from '../artifacts/PercentageTransferManager.json';
+import * as VolumeRestrictionTransferManager from '../artifacts/VolumeRestrictionTM.json';
 
 export {
   CappedSTO,
@@ -55,5 +56,6 @@ export {
   Pausable,
   STO,
   CountTransferManager,
-  PercentageTransferManager
+  PercentageTransferManager,
+  VolumeRestrictionTransferManager
 };
