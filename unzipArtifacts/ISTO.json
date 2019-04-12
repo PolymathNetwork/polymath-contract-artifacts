@@ -26,14 +26,14 @@
     "absolutePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/interfaces/ISTO.sol",
     "exportedSymbols": {
       "ISTO": [
-        555
+        11135
       ]
     },
-    "id": 556,
+    "id": 11136,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 549,
+        "id": 11129,
         "literals": [
           "solidity",
           "^",
@@ -41,7 +41,7 @@
           ".24"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:10"
+        "src": "0:24:21"
       },
       {
         "baseContracts": [],
@@ -49,9 +49,9 @@
         "contractKind": "interface",
         "documentation": "@title Interface to be implemented by all STO modules",
         "fullyImplemented": false,
-        "id": 555,
+        "id": 11135,
         "linearizedBaseContracts": [
-          555
+          11135
         ],
         "name": "ISTO",
         "nodeType": "ContractDefinition",
@@ -59,7 +59,7 @@
           {
             "body": null,
             "documentation": "@notice Returns the total no. of tokens sold",
-            "id": 554,
+            "id": 11134,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -67,23 +67,23 @@
             "name": "getTokensSold",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 550,
+              "id": 11130,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "202:2:10"
+              "src": "202:2:21"
             },
             "payable": false,
             "returnParameters": {
-              "id": 553,
+              "id": 11133,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 552,
+                  "id": 11132,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 554,
-                  "src": "228:7:10",
+                  "scope": 11134,
+                  "src": "228:7:21",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -91,10 +91,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 551,
+                    "id": 11131,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "228:7:10",
+                    "src": "228:7:21",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -104,33 +104,33 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "227:9:10"
+              "src": "227:9:21"
             },
-            "scope": 555,
-            "src": "180:57:10",
+            "scope": 11135,
+            "src": "180:57:21",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 556,
-        "src": "91:148:10"
+        "scope": 11136,
+        "src": "91:148:21"
       }
     ],
-    "src": "0:240:10"
+    "src": "0:240:21"
   },
   "legacyAST": {
     "absolutePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/interfaces/ISTO.sol",
     "exportedSymbols": {
       "ISTO": [
-        555
+        11135
       ]
     },
-    "id": 556,
+    "id": 11136,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 549,
+        "id": 11129,
         "literals": [
           "solidity",
           "^",
@@ -138,7 +138,7 @@
           ".24"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:10"
+        "src": "0:24:21"
       },
       {
         "baseContracts": [],
@@ -146,9 +146,9 @@
         "contractKind": "interface",
         "documentation": "@title Interface to be implemented by all STO modules",
         "fullyImplemented": false,
-        "id": 555,
+        "id": 11135,
         "linearizedBaseContracts": [
-          555
+          11135
         ],
         "name": "ISTO",
         "nodeType": "ContractDefinition",
@@ -156,7 +156,7 @@
           {
             "body": null,
             "documentation": "@notice Returns the total no. of tokens sold",
-            "id": 554,
+            "id": 11134,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -164,23 +164,23 @@
             "name": "getTokensSold",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 550,
+              "id": 11130,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "202:2:10"
+              "src": "202:2:21"
             },
             "payable": false,
             "returnParameters": {
-              "id": 553,
+              "id": 11133,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 552,
+                  "id": 11132,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 554,
-                  "src": "228:7:10",
+                  "scope": 11134,
+                  "src": "228:7:21",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -188,10 +188,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 551,
+                    "id": 11131,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "228:7:10",
+                    "src": "228:7:21",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -201,20 +201,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "227:9:10"
+              "src": "227:9:21"
             },
-            "scope": 555,
-            "src": "180:57:10",
+            "scope": 11135,
+            "src": "180:57:21",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 556,
-        "src": "91:148:10"
+        "scope": 11136,
+        "src": "91:148:21"
       }
     ],
-    "src": "0:240:10"
+    "src": "0:240:21"
   },
   "compiler": {
     "name": "solc",
@@ -222,5 +222,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2019-03-22T12:01:56.131Z"
+  "updatedAt": "2019-04-01T17:52:46.161Z"
 }
