@@ -11,13 +11,13 @@ yarn add @polymathnetwork/contract-artifacts
 **Import**
 
 ```typescript
-import * as artifacts from '@polymathnetwork/contract-artifacts';
+import * as artifacts from "@polymathnetwork/contract-artifacts";
 ```
 
 or
 
 ```javascript
-var artifacts = require('@polymathnetwork/contract-artifacts');
+var artifacts = require("@polymathnetwork/contract-artifacts");
 ```
 
 ## Contributing
@@ -36,6 +36,14 @@ Then install dependencies
 
 ```bash
 yarn install
+```
+
+### Zip artifacts
+
+Python3.5 required
+
+```bash
+python3 abiReducer.py ../unzipArtifacts ../artifacts
 ```
 
 ### Build
