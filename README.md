@@ -43,6 +43,7 @@ yarn install
 Python3.5 required
 
 ```bash
+cd scripts
 python3 abiReducer.py ../unzipArtifacts ../artifacts
 ```
 
