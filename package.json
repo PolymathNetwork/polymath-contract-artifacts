@@ -16,7 +16,8 @@
   },
   "scripts": {
     "clean": "shx rm -rf lib",
-    "build": "yarn clean && yarn tsc -b"
+    "zip": "python3 scripts/abiReducer.py ./unzipArtifacts ./artifacts",
+    "build": "yarn clean && yarn zip && yarn tsc -b"
   },
   "repository": {
     "type": "git",
