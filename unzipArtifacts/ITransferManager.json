@@ -2,6 +2,147 @@
   "contractName": "ITransferManager",
   "abi": [
     {
+      "constant": true,
+      "inputs": [],
+      "name": "getInitFunction",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "paused",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "takeFee",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "polyToken",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "securityToken",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getPermissions",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "factory",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "FEE_ADMIN",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "_timestammp",
+          "type": "uint256"
+        }
+      ],
+      "name": "Pause",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "_timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "Unpause",
+      "type": "event"
+    },
+    {
       "constant": false,
       "inputs": [
         {
@@ -19,12 +160,16 @@
         {
           "name": "_data",
           "type": "bytes"
+        },
+        {
+          "name": "_isTransfer",
+          "type": "bool"
         }
       ],
-      "name": "executeTransfer",
+      "name": "verifyTransfer",
       "outputs": [
         {
-          "name": "result",
+          "name": "",
           "type": "uint8"
         }
       ],
@@ -33,65 +178,21 @@
       "type": "function"
     },
     {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_from",
-          "type": "address"
-        },
-        {
-          "name": "_to",
-          "type": "address"
-        },
-        {
-          "name": "_amount",
-          "type": "uint256"
-        },
-        {
-          "name": "_data",
-          "type": "bytes"
-        }
-      ],
-      "name": "verifyTransfer",
-      "outputs": [
-        {
-          "name": "result",
-          "type": "uint8"
-        },
-        {
-          "name": "partition",
-          "type": "bytes32"
-        }
-      ],
+      "constant": false,
+      "inputs": [],
+      "name": "unpause",
+      "outputs": [],
       "payable": false,
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_partition",
-          "type": "bytes32"
-        },
-        {
-          "name": "_tokenHolder",
-          "type": "address"
-        },
-        {
-          "name": "_additionalBalance",
-          "type": "uint256"
-        }
-      ],
-      "name": "getTokensByPartition",
-      "outputs": [
-        {
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
+      "constant": false,
+      "inputs": [],
+      "name": "pause",
+      "outputs": [],
       "payable": false,
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
       "type": "function"
     }
   ],
@@ -99,257 +200,164 @@
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity 0.5.8;\n\n/**\n * @title Interface to be implemented by all Transfer Manager modules\n */\ninterface ITransferManager {\n    //  If verifyTransfer returns:\n    //  FORCE_VALID, the transaction will always be valid, regardless of other TM results\n    //  INVALID, then the transfer should not be allowed regardless of other TM results\n    //  VALID, then the transfer is valid for this TM\n    //  NA, then the result from this TM is ignored\n    enum Result {INVALID, NA, VALID, FORCE_VALID}\n\n    /**\n     * @notice Determines if the transfer between these two accounts can happen\n     */\n    function executeTransfer(address _from, address _to, uint256 _amount, bytes calldata _data) external returns(Result result);\n\n    function verifyTransfer(address _from, address _to, uint256 _amount, bytes calldata _data) external view returns(Result result, bytes32 partition);\n\n    /**\n     * @notice return the amount of tokens for a given user as per the partition\n     * @param _partition Identifier\n     * @param _tokenHolder Whom token amount need to query\n     * @param _additionalBalance It is the `_value` that transfer during transfer/transferFrom function call\n     */\n    function getTokensByPartition(bytes32 _partition, address _tokenHolder, uint256 _additionalBalance) external view returns(uint256 amount);\n\n}\n",
-  "sourcePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/interfaces/ITransferManager.sol",
+  "source": "pragma solidity ^0.4.24;\n\nimport \"../../Pausable.sol\";\nimport \"../Module.sol\";\n\n/**\n * @title Interface to be implemented by all Transfer Manager modules\n * @dev abstract contract\n */\ncontract ITransferManager is Module, Pausable {\n\n    //If verifyTransfer returns:\n    //  FORCE_VALID, the transaction will always be valid, regardless of other TM results\n    //  INVALID, then the transfer should not be allowed regardless of other TM results\n    //  VALID, then the transfer is valid for this TM\n    //  NA, then the result from this TM is ignored\n    enum Result {INVALID, NA, VALID, FORCE_VALID}\n\n    function verifyTransfer(address _from, address _to, uint256 _amount, bytes _data, bool _isTransfer) public returns(Result);\n\n    function unpause() public onlyOwner {\n        super._unpause();\n    }\n\n    function pause() public onlyOwner {\n        super._pause();\n    }\n}\n",
+  "sourcePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/modules/TransferManager/ITransferManager.sol",
   "ast": {
-    "absolutePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/interfaces/ITransferManager.sol",
+    "absolutePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/modules/TransferManager/ITransferManager.sol",
     "exportedSymbols": {
       "ITransferManager": [
-        16026
+        3591
       ]
     },
-    "id": 16027,
+    "id": 3592,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 15981,
+        "id": 3542,
         "literals": [
           "solidity",
-          "0.5",
-          ".8"
+          "^",
+          "0.4",
+          ".24"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:22:28"
+        "src": "0:24:11"
       },
       {
-        "baseContracts": [],
-        "contractDependencies": [],
-        "contractKind": "interface",
-        "documentation": "@title Interface to be implemented by all Transfer Manager modules",
+        "absolutePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/Pausable.sol",
+        "file": "../../Pausable.sol",
+        "id": 3543,
+        "nodeType": "ImportDirective",
+        "scope": 3592,
+        "sourceUnit": 61,
+        "src": "26:28:11",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/modules/Module.sol",
+        "file": "../Module.sol",
+        "id": 3544,
+        "nodeType": "ImportDirective",
+        "scope": 3592,
+        "sourceUnit": 3145,
+        "src": "55:23:11",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 3545,
+              "name": "Module",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3144,
+              "src": "213:6:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Module_$3144",
+                "typeString": "contract Module"
+              }
+            },
+            "id": 3546,
+            "nodeType": "InheritanceSpecifier",
+            "src": "213:6:11"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 3547,
+              "name": "Pausable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 60,
+              "src": "221:8:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Pausable_$60",
+                "typeString": "contract Pausable"
+              }
+            },
+            "id": 3548,
+            "nodeType": "InheritanceSpecifier",
+            "src": "221:8:11"
+          }
+        ],
+        "contractDependencies": [
+          60,
+          173,
+          3144,
+          3540
+        ],
+        "contractKind": "contract",
+        "documentation": "@title Interface to be implemented by all Transfer Manager modules\n@dev abstract contract",
         "fullyImplemented": false,
-        "id": 16026,
+        "id": 3591,
         "linearizedBaseContracts": [
-          16026
+          3591,
+          60,
+          3144,
+          3540,
+          173
         ],
         "name": "ITransferManager",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "ITransferManager.Result",
-            "id": 15986,
+            "id": 3553,
             "members": [
               {
-                "id": 15982,
+                "id": 3549,
                 "name": "INVALID",
                 "nodeType": "EnumValue",
-                "src": "467:7:28"
+                "src": "567:7:11"
               },
               {
-                "id": 15983,
+                "id": 3550,
                 "name": "NA",
                 "nodeType": "EnumValue",
-                "src": "476:2:28"
+                "src": "576:2:11"
               },
               {
-                "id": 15984,
+                "id": 3551,
                 "name": "VALID",
                 "nodeType": "EnumValue",
-                "src": "480:5:28"
+                "src": "580:5:11"
               },
               {
-                "id": 15985,
+                "id": 3552,
                 "name": "FORCE_VALID",
                 "nodeType": "EnumValue",
-                "src": "487:11:28"
+                "src": "587:11:11"
               }
             ],
             "name": "Result",
             "nodeType": "EnumDefinition",
-            "src": "454:45:28"
-          },
-          {
-            "body": null,
-            "documentation": "@notice Determines if the transfer between these two accounts can happen",
-            "id": 15999,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "executeTransfer",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 15995,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 15988,
-                  "name": "_from",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 15999,
-                  "src": "626:13:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 15987,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "626:7:28",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 15990,
-                  "name": "_to",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 15999,
-                  "src": "641:11:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 15989,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "641:7:28",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 15992,
-                  "name": "_amount",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 15999,
-                  "src": "654:15:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 15991,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "654:7:28",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 15994,
-                  "name": "_data",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 15999,
-                  "src": "671:20:28",
-                  "stateVariable": false,
-                  "storageLocation": "calldata",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bytes_calldata_ptr",
-                    "typeString": "bytes"
-                  },
-                  "typeName": {
-                    "id": 15993,
-                    "name": "bytes",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "671:5:28",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bytes_storage_ptr",
-                      "typeString": "bytes"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "625:67:28"
-            },
-            "returnParameters": {
-              "id": 15998,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 15997,
-                  "name": "result",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 15999,
-                  "src": "710:13:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_Result_$15986",
-                    "typeString": "enum ITransferManager.Result"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 15996,
-                    "name": "Result",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 15986,
-                    "src": "710:6:28",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_Result_$15986",
-                      "typeString": "enum ITransferManager.Result"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "709:15:28"
-            },
-            "scope": 16026,
-            "src": "601:124:28",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
+            "src": "554:45:11"
           },
           {
             "body": null,
             "documentation": null,
-            "id": 16014,
+            "id": 3568,
             "implemented": false,
-            "kind": "function",
+            "isConstructor": false,
+            "isDeclaredConst": false,
             "modifiers": [],
             "name": "verifyTransfer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 16008,
+              "id": 3564,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 16001,
+                  "id": 3555,
                   "name": "_from",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16014,
-                  "src": "755:13:28",
+                  "scope": 3568,
+                  "src": "629:13:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -357,11 +365,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 16000,
+                    "id": 3554,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "755:7:28",
-                    "stateMutability": "nonpayable",
+                    "src": "629:7:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -372,11 +379,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 16003,
+                  "id": 3557,
                   "name": "_to",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16014,
-                  "src": "770:11:28",
+                  "scope": 3568,
+                  "src": "644:11:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -384,11 +391,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 16002,
+                    "id": 3556,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "770:7:28",
-                    "stateMutability": "nonpayable",
+                    "src": "644:7:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -399,11 +405,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 16005,
+                  "id": 3559,
                   "name": "_amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16014,
-                  "src": "783:15:28",
+                  "scope": 3568,
+                  "src": "657:15:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -411,10 +417,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 16004,
+                    "id": 3558,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "783:7:28",
+                    "src": "657:7:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -425,22 +431,22 @@
                 },
                 {
                   "constant": false,
-                  "id": 16007,
+                  "id": 3561,
                   "name": "_data",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16014,
-                  "src": "800:20:28",
+                  "scope": 3568,
+                  "src": "674:11:11",
                   "stateVariable": false,
-                  "storageLocation": "calldata",
+                  "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeIdentifier": "t_bytes_memory_ptr",
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 16006,
+                    "id": 3560,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "800:5:28",
+                    "src": "674:5:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -448,467 +454,453 @@
                   },
                   "value": null,
                   "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3563,
+                  "name": "_isTransfer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3568,
+                  "src": "687:16:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 3562,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "687:4:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
                 }
               ],
-              "src": "754:67:28"
+              "src": "628:76:11"
             },
+            "payable": false,
             "returnParameters": {
-              "id": 16013,
+              "id": 3567,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 16010,
-                  "name": "result",
+                  "id": 3566,
+                  "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16014,
-                  "src": "844:13:28",
+                  "scope": 3568,
+                  "src": "720:6:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_Result_$15986",
+                    "typeIdentifier": "t_enum$_Result_$3553",
                     "typeString": "enum ITransferManager.Result"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 16009,
+                    "id": 3565,
                     "name": "Result",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 15986,
-                    "src": "844:6:28",
+                    "referencedDeclaration": 3553,
+                    "src": "720:6:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_Result_$15986",
+                      "typeIdentifier": "t_enum$_Result_$3553",
                       "typeString": "enum ITransferManager.Result"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 16012,
-                  "name": "partition",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 16014,
-                  "src": "859:17:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bytes32",
-                    "typeString": "bytes32"
-                  },
-                  "typeName": {
-                    "id": 16011,
-                    "name": "bytes32",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "859:7:28",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bytes32",
-                      "typeString": "bytes32"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
                 }
               ],
-              "src": "843:34:28"
+              "src": "719:8:11"
             },
-            "scope": 16026,
-            "src": "731:147:28",
-            "stateMutability": "view",
+            "scope": 3591,
+            "src": "605:123:11",
+            "stateMutability": "nonpayable",
             "superFunction": null,
-            "visibility": "external"
+            "visibility": "public"
           },
           {
-            "body": null,
-            "documentation": "@notice return the amount of tokens for a given user as per the partition\n@param _partition Identifier\n@param _tokenHolder Whom token amount need to query\n@param _additionalBalance It is the `_value` that transfer during transfer/transferFrom function call",
-            "id": 16025,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "getTokensByPartition",
+            "body": {
+              "id": 3578,
+              "nodeType": "Block",
+              "src": "770:33:11",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 3573,
+                        "name": "super",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7213,
+                        "src": "780:5:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_super$_ITransferManager_$3591",
+                          "typeString": "contract super ITransferManager"
+                        }
+                      },
+                      "id": 3575,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "_unpause",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 59,
+                      "src": "780:14:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
+                        "typeString": "function ()"
+                      }
+                    },
+                    "id": 3576,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "780:16:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3577,
+                  "nodeType": "ExpressionStatement",
+                  "src": "780:16:11"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 3579,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 3571,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 3570,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 3065,
+                  "src": "760:9:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "760:9:11"
+              }
+            ],
+            "name": "unpause",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 16021,
+              "id": 3569,
               "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 16016,
-                  "name": "_partition",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 16025,
-                  "src": "1215:18:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bytes32",
-                    "typeString": "bytes32"
-                  },
-                  "typeName": {
-                    "id": 16015,
-                    "name": "bytes32",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1215:7:28",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bytes32",
-                      "typeString": "bytes32"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 16018,
-                  "name": "_tokenHolder",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 16025,
-                  "src": "1235:20:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 16017,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1235:7:28",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 16020,
-                  "name": "_additionalBalance",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 16025,
-                  "src": "1257:26:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 16019,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1257:7:28",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1214:70:28"
+              "parameters": [],
+              "src": "750:2:11"
             },
+            "payable": false,
             "returnParameters": {
-              "id": 16024,
+              "id": 3572,
               "nodeType": "ParameterList",
-              "parameters": [
+              "parameters": [],
+              "src": "770:0:11"
+            },
+            "scope": 3591,
+            "src": "734:69:11",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 3589,
+              "nodeType": "Block",
+              "src": "843:31:11",
+              "statements": [
                 {
-                  "constant": false,
-                  "id": 16023,
-                  "name": "amount",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 16025,
-                  "src": "1307:14:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 16022,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1307:7:28",
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 3584,
+                        "name": "super",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7213,
+                        "src": "853:5:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_super$_ITransferManager_$3591",
+                          "typeString": "contract super ITransferManager"
+                        }
+                      },
+                      "id": 3586,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "_pause",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 45,
+                      "src": "853:12:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
+                        "typeString": "function ()"
+                      }
+                    },
+                    "id": 3587,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "853:14:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
                     }
                   },
-                  "value": null,
-                  "visibility": "internal"
+                  "id": 3588,
+                  "nodeType": "ExpressionStatement",
+                  "src": "853:14:11"
                 }
-              ],
-              "src": "1306:16:28"
+              ]
             },
-            "scope": 16026,
-            "src": "1185:138:28",
-            "stateMutability": "view",
+            "documentation": null,
+            "id": 3590,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 3582,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 3581,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 3065,
+                  "src": "833:9:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "833:9:11"
+              }
+            ],
+            "name": "pause",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3580,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "823:2:11"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3583,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "843:0:11"
+            },
+            "scope": 3591,
+            "src": "809:65:11",
+            "stateMutability": "nonpayable",
             "superFunction": null,
-            "visibility": "external"
+            "visibility": "public"
           }
         ],
-        "scope": 16027,
-        "src": "102:1224:28"
+        "scope": 3592,
+        "src": "184:692:11"
       }
     ],
-    "src": "0:1327:28"
+    "src": "0:877:11"
   },
   "legacyAST": {
-    "absolutePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/interfaces/ITransferManager.sol",
+    "absolutePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/modules/TransferManager/ITransferManager.sol",
     "exportedSymbols": {
       "ITransferManager": [
-        16026
+        3591
       ]
     },
-    "id": 16027,
+    "id": 3592,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 15981,
+        "id": 3542,
         "literals": [
           "solidity",
-          "0.5",
-          ".8"
+          "^",
+          "0.4",
+          ".24"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:22:28"
+        "src": "0:24:11"
       },
       {
-        "baseContracts": [],
-        "contractDependencies": [],
-        "contractKind": "interface",
-        "documentation": "@title Interface to be implemented by all Transfer Manager modules",
+        "absolutePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/Pausable.sol",
+        "file": "../../Pausable.sol",
+        "id": 3543,
+        "nodeType": "ImportDirective",
+        "scope": 3592,
+        "sourceUnit": 61,
+        "src": "26:28:11",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/modules/Module.sol",
+        "file": "../Module.sol",
+        "id": 3544,
+        "nodeType": "ImportDirective",
+        "scope": 3592,
+        "sourceUnit": 3145,
+        "src": "55:23:11",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 3545,
+              "name": "Module",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3144,
+              "src": "213:6:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Module_$3144",
+                "typeString": "contract Module"
+              }
+            },
+            "id": 3546,
+            "nodeType": "InheritanceSpecifier",
+            "src": "213:6:11"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 3547,
+              "name": "Pausable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 60,
+              "src": "221:8:11",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Pausable_$60",
+                "typeString": "contract Pausable"
+              }
+            },
+            "id": 3548,
+            "nodeType": "InheritanceSpecifier",
+            "src": "221:8:11"
+          }
+        ],
+        "contractDependencies": [
+          60,
+          173,
+          3144,
+          3540
+        ],
+        "contractKind": "contract",
+        "documentation": "@title Interface to be implemented by all Transfer Manager modules\n@dev abstract contract",
         "fullyImplemented": false,
-        "id": 16026,
+        "id": 3591,
         "linearizedBaseContracts": [
-          16026
+          3591,
+          60,
+          3144,
+          3540,
+          173
         ],
         "name": "ITransferManager",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "ITransferManager.Result",
-            "id": 15986,
+            "id": 3553,
             "members": [
               {
-                "id": 15982,
+                "id": 3549,
                 "name": "INVALID",
                 "nodeType": "EnumValue",
-                "src": "467:7:28"
+                "src": "567:7:11"
               },
               {
-                "id": 15983,
+                "id": 3550,
                 "name": "NA",
                 "nodeType": "EnumValue",
-                "src": "476:2:28"
+                "src": "576:2:11"
               },
               {
-                "id": 15984,
+                "id": 3551,
                 "name": "VALID",
                 "nodeType": "EnumValue",
-                "src": "480:5:28"
+                "src": "580:5:11"
               },
               {
-                "id": 15985,
+                "id": 3552,
                 "name": "FORCE_VALID",
                 "nodeType": "EnumValue",
-                "src": "487:11:28"
+                "src": "587:11:11"
               }
             ],
             "name": "Result",
             "nodeType": "EnumDefinition",
-            "src": "454:45:28"
-          },
-          {
-            "body": null,
-            "documentation": "@notice Determines if the transfer between these two accounts can happen",
-            "id": 15999,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "executeTransfer",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 15995,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 15988,
-                  "name": "_from",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 15999,
-                  "src": "626:13:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 15987,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "626:7:28",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 15990,
-                  "name": "_to",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 15999,
-                  "src": "641:11:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 15989,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "641:7:28",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 15992,
-                  "name": "_amount",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 15999,
-                  "src": "654:15:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 15991,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "654:7:28",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 15994,
-                  "name": "_data",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 15999,
-                  "src": "671:20:28",
-                  "stateVariable": false,
-                  "storageLocation": "calldata",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bytes_calldata_ptr",
-                    "typeString": "bytes"
-                  },
-                  "typeName": {
-                    "id": 15993,
-                    "name": "bytes",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "671:5:28",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bytes_storage_ptr",
-                      "typeString": "bytes"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "625:67:28"
-            },
-            "returnParameters": {
-              "id": 15998,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 15997,
-                  "name": "result",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 15999,
-                  "src": "710:13:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_Result_$15986",
-                    "typeString": "enum ITransferManager.Result"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 15996,
-                    "name": "Result",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 15986,
-                    "src": "710:6:28",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_Result_$15986",
-                      "typeString": "enum ITransferManager.Result"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "709:15:28"
-            },
-            "scope": 16026,
-            "src": "601:124:28",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
+            "src": "554:45:11"
           },
           {
             "body": null,
             "documentation": null,
-            "id": 16014,
+            "id": 3568,
             "implemented": false,
-            "kind": "function",
+            "isConstructor": false,
+            "isDeclaredConst": false,
             "modifiers": [],
             "name": "verifyTransfer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 16008,
+              "id": 3564,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 16001,
+                  "id": 3555,
                   "name": "_from",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16014,
-                  "src": "755:13:28",
+                  "scope": 3568,
+                  "src": "629:13:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -916,11 +908,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 16000,
+                    "id": 3554,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "755:7:28",
-                    "stateMutability": "nonpayable",
+                    "src": "629:7:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -931,11 +922,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 16003,
+                  "id": 3557,
                   "name": "_to",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16014,
-                  "src": "770:11:28",
+                  "scope": 3568,
+                  "src": "644:11:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -943,11 +934,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 16002,
+                    "id": 3556,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "770:7:28",
-                    "stateMutability": "nonpayable",
+                    "src": "644:7:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -958,11 +948,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 16005,
+                  "id": 3559,
                   "name": "_amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16014,
-                  "src": "783:15:28",
+                  "scope": 3568,
+                  "src": "657:15:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -970,10 +960,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 16004,
+                    "id": 3558,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "783:7:28",
+                    "src": "657:7:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -984,22 +974,22 @@
                 },
                 {
                   "constant": false,
-                  "id": 16007,
+                  "id": 3561,
                   "name": "_data",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16014,
-                  "src": "800:20:28",
+                  "scope": 3568,
+                  "src": "674:11:11",
                   "stateVariable": false,
-                  "storageLocation": "calldata",
+                  "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeIdentifier": "t_bytes_memory_ptr",
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 16006,
+                    "id": 3560,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "800:5:28",
+                    "src": "674:5:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -1007,245 +997,302 @@
                   },
                   "value": null,
                   "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3563,
+                  "name": "_isTransfer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3568,
+                  "src": "687:16:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 3562,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "687:4:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
                 }
               ],
-              "src": "754:67:28"
+              "src": "628:76:11"
             },
+            "payable": false,
             "returnParameters": {
-              "id": 16013,
+              "id": 3567,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 16010,
-                  "name": "result",
+                  "id": 3566,
+                  "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16014,
-                  "src": "844:13:28",
+                  "scope": 3568,
+                  "src": "720:6:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_Result_$15986",
+                    "typeIdentifier": "t_enum$_Result_$3553",
                     "typeString": "enum ITransferManager.Result"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 16009,
+                    "id": 3565,
                     "name": "Result",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 15986,
-                    "src": "844:6:28",
+                    "referencedDeclaration": 3553,
+                    "src": "720:6:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_Result_$15986",
+                      "typeIdentifier": "t_enum$_Result_$3553",
                       "typeString": "enum ITransferManager.Result"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 16012,
-                  "name": "partition",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 16014,
-                  "src": "859:17:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bytes32",
-                    "typeString": "bytes32"
-                  },
-                  "typeName": {
-                    "id": 16011,
-                    "name": "bytes32",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "859:7:28",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bytes32",
-                      "typeString": "bytes32"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
                 }
               ],
-              "src": "843:34:28"
+              "src": "719:8:11"
             },
-            "scope": 16026,
-            "src": "731:147:28",
-            "stateMutability": "view",
+            "scope": 3591,
+            "src": "605:123:11",
+            "stateMutability": "nonpayable",
             "superFunction": null,
-            "visibility": "external"
+            "visibility": "public"
           },
           {
-            "body": null,
-            "documentation": "@notice return the amount of tokens for a given user as per the partition\n@param _partition Identifier\n@param _tokenHolder Whom token amount need to query\n@param _additionalBalance It is the `_value` that transfer during transfer/transferFrom function call",
-            "id": 16025,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "getTokensByPartition",
+            "body": {
+              "id": 3578,
+              "nodeType": "Block",
+              "src": "770:33:11",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 3573,
+                        "name": "super",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7213,
+                        "src": "780:5:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_super$_ITransferManager_$3591",
+                          "typeString": "contract super ITransferManager"
+                        }
+                      },
+                      "id": 3575,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "_unpause",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 59,
+                      "src": "780:14:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
+                        "typeString": "function ()"
+                      }
+                    },
+                    "id": 3576,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "780:16:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3577,
+                  "nodeType": "ExpressionStatement",
+                  "src": "780:16:11"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 3579,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 3571,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 3570,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 3065,
+                  "src": "760:9:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "760:9:11"
+              }
+            ],
+            "name": "unpause",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 16021,
+              "id": 3569,
               "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 16016,
-                  "name": "_partition",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 16025,
-                  "src": "1215:18:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bytes32",
-                    "typeString": "bytes32"
-                  },
-                  "typeName": {
-                    "id": 16015,
-                    "name": "bytes32",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1215:7:28",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bytes32",
-                      "typeString": "bytes32"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 16018,
-                  "name": "_tokenHolder",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 16025,
-                  "src": "1235:20:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 16017,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1235:7:28",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 16020,
-                  "name": "_additionalBalance",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 16025,
-                  "src": "1257:26:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 16019,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1257:7:28",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1214:70:28"
+              "parameters": [],
+              "src": "750:2:11"
             },
+            "payable": false,
             "returnParameters": {
-              "id": 16024,
+              "id": 3572,
               "nodeType": "ParameterList",
-              "parameters": [
+              "parameters": [],
+              "src": "770:0:11"
+            },
+            "scope": 3591,
+            "src": "734:69:11",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 3589,
+              "nodeType": "Block",
+              "src": "843:31:11",
+              "statements": [
                 {
-                  "constant": false,
-                  "id": 16023,
-                  "name": "amount",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 16025,
-                  "src": "1307:14:28",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 16022,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1307:7:28",
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 3584,
+                        "name": "super",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7213,
+                        "src": "853:5:11",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_super$_ITransferManager_$3591",
+                          "typeString": "contract super ITransferManager"
+                        }
+                      },
+                      "id": 3586,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "_pause",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 45,
+                      "src": "853:12:11",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
+                        "typeString": "function ()"
+                      }
+                    },
+                    "id": 3587,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "853:14:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
                     }
                   },
-                  "value": null,
-                  "visibility": "internal"
+                  "id": 3588,
+                  "nodeType": "ExpressionStatement",
+                  "src": "853:14:11"
                 }
-              ],
-              "src": "1306:16:28"
+              ]
             },
-            "scope": 16026,
-            "src": "1185:138:28",
-            "stateMutability": "view",
+            "documentation": null,
+            "id": 3590,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 3582,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 3581,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 3065,
+                  "src": "833:9:11",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "833:9:11"
+              }
+            ],
+            "name": "pause",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3580,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "823:2:11"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3583,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "843:0:11"
+            },
+            "scope": 3591,
+            "src": "809:65:11",
+            "stateMutability": "nonpayable",
             "superFunction": null,
-            "visibility": "external"
+            "visibility": "public"
           }
         ],
-        "scope": 16027,
-        "src": "102:1224:28"
+        "scope": 3592,
+        "src": "184:692:11"
       }
     ],
-    "src": "0:1327:28"
+    "src": "0:877:11"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.2",
-  "updatedAt": "2019-06-21T16:15:52.543Z",
-  "devdoc": {
-    "methods": {
-      "getTokensByPartition(bytes32,address,uint256)": {
-        "params": {
-          "_additionalBalance": "It is the `_value` that transfer during transfer/transferFrom function call",
-          "_partition": "Identifier",
-          "_tokenHolder": "Whom token amount need to query"
-        }
-      }
-    },
-    "title": "Interface to be implemented by all Transfer Manager modules"
-  },
-  "userdoc": {
-    "methods": {
-      "executeTransfer(address,address,uint256,bytes)": {
-        "notice": "Determines if the transfer between these two accounts can happen"
-      },
-      "getTokensByPartition(bytes32,address,uint256)": {
-        "notice": "return the amount of tokens for a given user as per the partition"
-      }
-    }
-  }
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2019-04-09T19:04:29.566Z"
 }
