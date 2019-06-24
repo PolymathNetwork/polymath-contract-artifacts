@@ -1,8 +1,8 @@
 import * as BlacklistTransferManager from "../artifacts/BlacklistTransferManager.json";
 import * as CappedSTO from "../artifacts/CappedSTO.json";
 import * as CappedSTOFactory from "../artifacts/CappedSTOFactory.json";
-import * as DetailedERC20 from "../artifacts/DetailedERC20.json";
 import * as ERC20DividendCheckpoint from "../artifacts/ERC20DividendCheckpoint.json";
+import * as ERC20Detailed from "../artifacts/ERC20Detailed.json";
 import * as EtherDividendCheckpoint from "../artifacts/EtherDividendCheckpoint.json";
 import * as FeatureRegistry from "../artifacts/FeatureRegistry.json";
 import * as GeneralPermissionManager from "../artifacts/GeneralPermissionManager.json";
@@ -39,9 +39,9 @@ export {
   CappedSTO,
   CappedSTOFactory,
   CountTransferManager,
-  DetailedERC20,
   DividendCheckpoint,
   ERC20DividendCheckpoint,
+  ERC20Detailed,
   EtherDividendCheckpoint,
   FeatureRegistry,
   GeneralPermissionManager,
