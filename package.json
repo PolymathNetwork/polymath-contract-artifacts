@@ -7,10 +7,6 @@
   "description": "Polymath smart contract compilation artifacts",
   "main": "lib/src/index.js",
   "license": "Apache-2.0",
-  "files": [
-    "lib/**/*",
-    "artifacts/*"
-  ],
   "directories": {
     "test": "test"
   },
