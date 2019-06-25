@@ -1,1 +1,0 @@
-{ "abi": [{ "constant": true, "inputs": [], "name": "getTokensSold", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }], "networks": {} }
