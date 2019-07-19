@@ -30,25 +30,24 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"getInitFunction\",\"outputs\":[{\"name\":\"initFunction\",\"type\":\"bytes4\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getPermissions\",\"outputs\":[{\"name\":\"permissions\",\"type\":\"bytes32[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{},\"title\":\"Interface that every module contract should implement\"},\"userdoc\":{\"methods\":{\"getInitFunction()\":{\"notice\":\"This function returns the signature of configure function\"},\"getPermissions()\":{\"notice\":\"Return the permission flags that are associated with a module\"}}}},\"settings\":{\"compilationTarget\":{\"/C/Users/victor/Repos/polymath-core/contracts/interfaces/IModule.sol\":\"IModule\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/victor/Repos/polymath-core/contracts/interfaces/IModule.sol\":{\"keccak256\":\"0xb30a1bc64af3d08ef58bb262fd30828a91644da8273a90be11143b46fb5a30cb\",\"urls\":[\"bzzr://da04ef1fce9eca7ae8164b922c08fbe4f446c7f0bbb1837b5a80bb34ed5983be\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity 0.5.8;\n\n/**\n * @title Interface that every module contract should implement\n */\ninterface IModule {\n    /**\n     * @notice This function returns the signature of configure function\n     */\n    function getInitFunction() external pure returns(bytes4 initFunction);\n\n    /**\n     * @notice Return the permission flags that are associated with a module\n     */\n    function getPermissions() external view returns(bytes32[] memory permissions);\n\n}\n",
-  "sourcePath": "C:\\Users\\victor\\Repos\\polymath-core\\contracts\\interfaces\\IModule.sol",
+  "sourcePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/interfaces/IModule.sol",
   "ast": {
-    "absolutePath": "/C/Users/victor/Repos/polymath-core/contracts/interfaces/IModule.sol",
+    "absolutePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/interfaces/IModule.sol",
     "exportedSymbols": {
       "IModule": [
-        13905
+        13966
       ]
     },
-    "id": 13906,
+    "id": 13967,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 13893,
+        "id": 13954,
         "literals": [
           "solidity",
           "0.5",
@@ -63,9 +62,9 @@
         "contractKind": "interface",
         "documentation": "@title Interface that every module contract should implement",
         "fullyImplemented": false,
-        "id": 13905,
+        "id": 13966,
         "linearizedBaseContracts": [
-          13905
+          13966
         ],
         "name": "IModule",
         "nodeType": "ContractDefinition",
@@ -73,28 +72,28 @@
           {
             "body": null,
             "documentation": "@notice This function returns the signature of configure function",
-            "id": 13898,
+            "id": 13959,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getInitFunction",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 13894,
+              "id": 13955,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "233:2:17"
             },
             "returnParameters": {
-              "id": 13897,
+              "id": 13958,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 13896,
+                  "id": 13957,
                   "name": "initFunction",
                   "nodeType": "VariableDeclaration",
-                  "scope": 13898,
+                  "scope": 13959,
                   "src": "258:19:17",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -103,7 +102,7 @@
                     "typeString": "bytes4"
                   },
                   "typeName": {
-                    "id": 13895,
+                    "id": 13956,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
                     "src": "258:6:17",
@@ -118,7 +117,7 @@
               ],
               "src": "257:21:17"
             },
-            "scope": 13905,
+            "scope": 13966,
             "src": "209:70:17",
             "stateMutability": "pure",
             "superFunction": null,
@@ -127,28 +126,28 @@
           {
             "body": null,
             "documentation": "@notice Return the permission flags that are associated with a module",
-            "id": 13904,
+            "id": 13965,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getPermissions",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 13899,
+              "id": 13960,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "401:2:17"
             },
             "returnParameters": {
-              "id": 13903,
+              "id": 13964,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 13902,
+                  "id": 13963,
                   "name": "permissions",
                   "nodeType": "VariableDeclaration",
-                  "scope": 13904,
+                  "scope": 13965,
                   "src": "426:28:17",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -158,7 +157,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 13900,
+                      "id": 13961,
                       "name": "bytes32",
                       "nodeType": "ElementaryTypeName",
                       "src": "426:7:17",
@@ -167,7 +166,7 @@
                         "typeString": "bytes32"
                       }
                     },
-                    "id": 13901,
+                    "id": 13962,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "426:9:17",
@@ -182,31 +181,31 @@
               ],
               "src": "425:30:17"
             },
-            "scope": 13905,
+            "scope": 13966,
             "src": "378:78:17",
             "stateMutability": "view",
-            "superFunction": 32501,
+            "superFunction": 32568,
             "visibility": "external"
           }
         ],
-        "scope": 13906,
+        "scope": 13967,
         "src": "96:363:17"
       }
     ],
     "src": "0:460:17"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/victor/Repos/polymath-core/contracts/interfaces/IModule.sol",
+    "absolutePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/interfaces/IModule.sol",
     "exportedSymbols": {
       "IModule": [
-        13905
+        13966
       ]
     },
-    "id": 13906,
+    "id": 13967,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 13893,
+        "id": 13954,
         "literals": [
           "solidity",
           "0.5",
@@ -221,9 +220,9 @@
         "contractKind": "interface",
         "documentation": "@title Interface that every module contract should implement",
         "fullyImplemented": false,
-        "id": 13905,
+        "id": 13966,
         "linearizedBaseContracts": [
-          13905
+          13966
         ],
         "name": "IModule",
         "nodeType": "ContractDefinition",
@@ -231,28 +230,28 @@
           {
             "body": null,
             "documentation": "@notice This function returns the signature of configure function",
-            "id": 13898,
+            "id": 13959,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getInitFunction",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 13894,
+              "id": 13955,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "233:2:17"
             },
             "returnParameters": {
-              "id": 13897,
+              "id": 13958,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 13896,
+                  "id": 13957,
                   "name": "initFunction",
                   "nodeType": "VariableDeclaration",
-                  "scope": 13898,
+                  "scope": 13959,
                   "src": "258:19:17",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -261,7 +260,7 @@
                     "typeString": "bytes4"
                   },
                   "typeName": {
-                    "id": 13895,
+                    "id": 13956,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
                     "src": "258:6:17",
@@ -276,7 +275,7 @@
               ],
               "src": "257:21:17"
             },
-            "scope": 13905,
+            "scope": 13966,
             "src": "209:70:17",
             "stateMutability": "pure",
             "superFunction": null,
@@ -285,28 +284,28 @@
           {
             "body": null,
             "documentation": "@notice Return the permission flags that are associated with a module",
-            "id": 13904,
+            "id": 13965,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getPermissions",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 13899,
+              "id": 13960,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "401:2:17"
             },
             "returnParameters": {
-              "id": 13903,
+              "id": 13964,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 13902,
+                  "id": 13963,
                   "name": "permissions",
                   "nodeType": "VariableDeclaration",
-                  "scope": 13904,
+                  "scope": 13965,
                   "src": "426:28:17",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -316,7 +315,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 13900,
+                      "id": 13961,
                       "name": "bytes32",
                       "nodeType": "ElementaryTypeName",
                       "src": "426:7:17",
@@ -325,7 +324,7 @@
                         "typeString": "bytes32"
                       }
                     },
-                    "id": 13901,
+                    "id": 13962,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "426:9:17",
@@ -340,14 +339,14 @@
               ],
               "src": "425:30:17"
             },
-            "scope": 13905,
+            "scope": 13966,
             "src": "378:78:17",
             "stateMutability": "view",
-            "superFunction": 32501,
+            "superFunction": 32568,
             "visibility": "external"
           }
         ],
-        "scope": 13906,
+        "scope": 13967,
         "src": "96:363:17"
       }
     ],
@@ -358,8 +357,8 @@
     "version": "0.5.8+commit.23d335f2.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.11",
-  "updatedAt": "2019-06-19T20:32:07.197Z",
+  "schemaVersion": "3.0.2",
+  "updatedAt": "2019-07-19T14:53:14.625Z",
   "devdoc": {
     "methods": {},
     "title": "Interface that every module contract should implement"
