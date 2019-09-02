@@ -1,6 +1,6 @@
 {
   "name": "@polymathnetwork/contract-artifacts",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "engines": {
     "node": ">=6.12"
   },
@@ -17,7 +17,7 @@
   "scripts": {
     "clean": "shx rm -rf lib",
     "zip": "python3 scripts/abiReducer.py ./unzipArtifacts ./artifacts",
-    "build": "yarn clean && yarn zip && yarn tsc -b"
+    "build": "yarn clean && yarn tsc -b"
   },
   "repository": {
     "type": "git",
