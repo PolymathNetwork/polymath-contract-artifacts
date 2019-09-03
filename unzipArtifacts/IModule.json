@@ -184,7 +184,7 @@
             "scope": 13966,
             "src": "378:78:17",
             "stateMutability": "view",
-            "superFunction": 32568,
+            "superFunction": 32671,
             "visibility": "external"
           }
         ],
@@ -342,7 +342,7 @@
             "scope": 13966,
             "src": "378:78:17",
             "stateMutability": "view",
-            "superFunction": 32568,
+            "superFunction": 32671,
             "visibility": "external"
           }
         ],
@@ -358,7 +358,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-07-19T14:53:14.625Z",
+  "updatedAt": "2019-09-03T13:52:34.328Z",
   "devdoc": {
     "methods": {},
     "title": "Interface that every module contract should implement"
