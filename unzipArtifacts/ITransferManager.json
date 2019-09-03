@@ -105,14 +105,14 @@
     "absolutePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/interfaces/ITransferManager.sol",
     "exportedSymbols": {
       "ITransferManager": [
-        16087
+        16110
       ]
     },
-    "id": 16088,
+    "id": 16111,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 16042,
+        "id": 16065,
         "literals": [
           "solidity",
           "0.5",
@@ -127,37 +127,37 @@
         "contractKind": "interface",
         "documentation": "@title Interface to be implemented by all Transfer Manager modules",
         "fullyImplemented": false,
-        "id": 16087,
+        "id": 16110,
         "linearizedBaseContracts": [
-          16087
+          16110
         ],
         "name": "ITransferManager",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "ITransferManager.Result",
-            "id": 16047,
+            "id": 16070,
             "members": [
               {
-                "id": 16043,
+                "id": 16066,
                 "name": "INVALID",
                 "nodeType": "EnumValue",
                 "src": "467:7:28"
               },
               {
-                "id": 16044,
+                "id": 16067,
                 "name": "NA",
                 "nodeType": "EnumValue",
                 "src": "476:2:28"
               },
               {
-                "id": 16045,
+                "id": 16068,
                 "name": "VALID",
                 "nodeType": "EnumValue",
                 "src": "480:5:28"
               },
               {
-                "id": 16046,
+                "id": 16069,
                 "name": "FORCE_VALID",
                 "nodeType": "EnumValue",
                 "src": "487:11:28"
@@ -170,22 +170,22 @@
           {
             "body": null,
             "documentation": "@notice Determines if the transfer between these two accounts can happen",
-            "id": 16060,
+            "id": 16083,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "executeTransfer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 16056,
+              "id": 16079,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 16049,
+                  "id": 16072,
                   "name": "_from",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16060,
+                  "scope": 16083,
                   "src": "626:13:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -194,7 +194,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 16048,
+                    "id": 16071,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "626:7:28",
@@ -209,10 +209,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16051,
+                  "id": 16074,
                   "name": "_to",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16060,
+                  "scope": 16083,
                   "src": "641:11:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -221,7 +221,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 16050,
+                    "id": 16073,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "641:7:28",
@@ -236,10 +236,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16053,
+                  "id": 16076,
                   "name": "_amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16060,
+                  "scope": 16083,
                   "src": "654:15:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -248,7 +248,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 16052,
+                    "id": 16075,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "654:7:28",
@@ -262,10 +262,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16055,
+                  "id": 16078,
                   "name": "_data",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16060,
+                  "scope": 16083,
                   "src": "671:20:28",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -274,7 +274,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 16054,
+                    "id": 16077,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "671:5:28",
@@ -290,31 +290,31 @@
               "src": "625:67:28"
             },
             "returnParameters": {
-              "id": 16059,
+              "id": 16082,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 16058,
+                  "id": 16081,
                   "name": "result",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16060,
+                  "scope": 16083,
                   "src": "710:13:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_Result_$16047",
+                    "typeIdentifier": "t_enum$_Result_$16070",
                     "typeString": "enum ITransferManager.Result"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 16057,
+                    "id": 16080,
                     "name": "Result",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 16047,
+                    "referencedDeclaration": 16070,
                     "src": "710:6:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_Result_$16047",
+                      "typeIdentifier": "t_enum$_Result_$16070",
                       "typeString": "enum ITransferManager.Result"
                     }
                   },
@@ -324,7 +324,7 @@
               ],
               "src": "709:15:28"
             },
-            "scope": 16087,
+            "scope": 16110,
             "src": "601:124:28",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -333,22 +333,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 16075,
+            "id": 16098,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "verifyTransfer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 16069,
+              "id": 16092,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 16062,
+                  "id": 16085,
                   "name": "_from",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16075,
+                  "scope": 16098,
                   "src": "755:13:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -357,7 +357,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 16061,
+                    "id": 16084,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "755:7:28",
@@ -372,10 +372,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16064,
+                  "id": 16087,
                   "name": "_to",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16075,
+                  "scope": 16098,
                   "src": "770:11:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -384,7 +384,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 16063,
+                    "id": 16086,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "770:7:28",
@@ -399,10 +399,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16066,
+                  "id": 16089,
                   "name": "_amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16075,
+                  "scope": 16098,
                   "src": "783:15:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -411,7 +411,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 16065,
+                    "id": 16088,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "783:7:28",
@@ -425,10 +425,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16068,
+                  "id": 16091,
                   "name": "_data",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16075,
+                  "scope": 16098,
                   "src": "800:20:28",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -437,7 +437,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 16067,
+                    "id": 16090,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "800:5:28",
@@ -453,31 +453,31 @@
               "src": "754:67:28"
             },
             "returnParameters": {
-              "id": 16074,
+              "id": 16097,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 16071,
+                  "id": 16094,
                   "name": "result",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16075,
+                  "scope": 16098,
                   "src": "844:13:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_Result_$16047",
+                    "typeIdentifier": "t_enum$_Result_$16070",
                     "typeString": "enum ITransferManager.Result"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 16070,
+                    "id": 16093,
                     "name": "Result",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 16047,
+                    "referencedDeclaration": 16070,
                     "src": "844:6:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_Result_$16047",
+                      "typeIdentifier": "t_enum$_Result_$16070",
                       "typeString": "enum ITransferManager.Result"
                     }
                   },
@@ -486,10 +486,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16073,
+                  "id": 16096,
                   "name": "partition",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16075,
+                  "scope": 16098,
                   "src": "859:17:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -498,7 +498,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 16072,
+                    "id": 16095,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "859:7:28",
@@ -513,7 +513,7 @@
               ],
               "src": "843:34:28"
             },
-            "scope": 16087,
+            "scope": 16110,
             "src": "731:147:28",
             "stateMutability": "view",
             "superFunction": null,
@@ -522,22 +522,22 @@
           {
             "body": null,
             "documentation": "@notice return the amount of tokens for a given user as per the partition\n@param _partition Identifier\n@param _tokenHolder Whom token amount need to query\n@param _additionalBalance It is the `_value` that transfer during transfer/transferFrom function call",
-            "id": 16086,
+            "id": 16109,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getTokensByPartition",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 16082,
+              "id": 16105,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 16077,
+                  "id": 16100,
                   "name": "_partition",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16086,
+                  "scope": 16109,
                   "src": "1215:18:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -546,7 +546,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 16076,
+                    "id": 16099,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "1215:7:28",
@@ -560,10 +560,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16079,
+                  "id": 16102,
                   "name": "_tokenHolder",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16086,
+                  "scope": 16109,
                   "src": "1235:20:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -572,7 +572,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 16078,
+                    "id": 16101,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1235:7:28",
@@ -587,10 +587,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16081,
+                  "id": 16104,
                   "name": "_additionalBalance",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16086,
+                  "scope": 16109,
                   "src": "1257:26:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -599,7 +599,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 16080,
+                    "id": 16103,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1257:7:28",
@@ -615,15 +615,15 @@
               "src": "1214:70:28"
             },
             "returnParameters": {
-              "id": 16085,
+              "id": 16108,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 16084,
+                  "id": 16107,
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16086,
+                  "scope": 16109,
                   "src": "1307:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -632,7 +632,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 16083,
+                    "id": 16106,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1307:7:28",
@@ -647,14 +647,14 @@
               ],
               "src": "1306:16:28"
             },
-            "scope": 16087,
+            "scope": 16110,
             "src": "1185:138:28",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 16088,
+        "scope": 16111,
         "src": "102:1224:28"
       }
     ],
@@ -664,14 +664,14 @@
     "absolutePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/interfaces/ITransferManager.sol",
     "exportedSymbols": {
       "ITransferManager": [
-        16087
+        16110
       ]
     },
-    "id": 16088,
+    "id": 16111,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 16042,
+        "id": 16065,
         "literals": [
           "solidity",
           "0.5",
@@ -686,37 +686,37 @@
         "contractKind": "interface",
         "documentation": "@title Interface to be implemented by all Transfer Manager modules",
         "fullyImplemented": false,
-        "id": 16087,
+        "id": 16110,
         "linearizedBaseContracts": [
-          16087
+          16110
         ],
         "name": "ITransferManager",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "ITransferManager.Result",
-            "id": 16047,
+            "id": 16070,
             "members": [
               {
-                "id": 16043,
+                "id": 16066,
                 "name": "INVALID",
                 "nodeType": "EnumValue",
                 "src": "467:7:28"
               },
               {
-                "id": 16044,
+                "id": 16067,
                 "name": "NA",
                 "nodeType": "EnumValue",
                 "src": "476:2:28"
               },
               {
-                "id": 16045,
+                "id": 16068,
                 "name": "VALID",
                 "nodeType": "EnumValue",
                 "src": "480:5:28"
               },
               {
-                "id": 16046,
+                "id": 16069,
                 "name": "FORCE_VALID",
                 "nodeType": "EnumValue",
                 "src": "487:11:28"
@@ -729,22 +729,22 @@
           {
             "body": null,
             "documentation": "@notice Determines if the transfer between these two accounts can happen",
-            "id": 16060,
+            "id": 16083,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "executeTransfer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 16056,
+              "id": 16079,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 16049,
+                  "id": 16072,
                   "name": "_from",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16060,
+                  "scope": 16083,
                   "src": "626:13:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -753,7 +753,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 16048,
+                    "id": 16071,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "626:7:28",
@@ -768,10 +768,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16051,
+                  "id": 16074,
                   "name": "_to",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16060,
+                  "scope": 16083,
                   "src": "641:11:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -780,7 +780,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 16050,
+                    "id": 16073,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "641:7:28",
@@ -795,10 +795,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16053,
+                  "id": 16076,
                   "name": "_amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16060,
+                  "scope": 16083,
                   "src": "654:15:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -807,7 +807,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 16052,
+                    "id": 16075,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "654:7:28",
@@ -821,10 +821,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16055,
+                  "id": 16078,
                   "name": "_data",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16060,
+                  "scope": 16083,
                   "src": "671:20:28",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -833,7 +833,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 16054,
+                    "id": 16077,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "671:5:28",
@@ -849,31 +849,31 @@
               "src": "625:67:28"
             },
             "returnParameters": {
-              "id": 16059,
+              "id": 16082,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 16058,
+                  "id": 16081,
                   "name": "result",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16060,
+                  "scope": 16083,
                   "src": "710:13:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_Result_$16047",
+                    "typeIdentifier": "t_enum$_Result_$16070",
                     "typeString": "enum ITransferManager.Result"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 16057,
+                    "id": 16080,
                     "name": "Result",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 16047,
+                    "referencedDeclaration": 16070,
                     "src": "710:6:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_Result_$16047",
+                      "typeIdentifier": "t_enum$_Result_$16070",
                       "typeString": "enum ITransferManager.Result"
                     }
                   },
@@ -883,7 +883,7 @@
               ],
               "src": "709:15:28"
             },
-            "scope": 16087,
+            "scope": 16110,
             "src": "601:124:28",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -892,22 +892,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 16075,
+            "id": 16098,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "verifyTransfer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 16069,
+              "id": 16092,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 16062,
+                  "id": 16085,
                   "name": "_from",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16075,
+                  "scope": 16098,
                   "src": "755:13:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -916,7 +916,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 16061,
+                    "id": 16084,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "755:7:28",
@@ -931,10 +931,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16064,
+                  "id": 16087,
                   "name": "_to",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16075,
+                  "scope": 16098,
                   "src": "770:11:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -943,7 +943,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 16063,
+                    "id": 16086,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "770:7:28",
@@ -958,10 +958,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16066,
+                  "id": 16089,
                   "name": "_amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16075,
+                  "scope": 16098,
                   "src": "783:15:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -970,7 +970,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 16065,
+                    "id": 16088,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "783:7:28",
@@ -984,10 +984,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16068,
+                  "id": 16091,
                   "name": "_data",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16075,
+                  "scope": 16098,
                   "src": "800:20:28",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -996,7 +996,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 16067,
+                    "id": 16090,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "800:5:28",
@@ -1012,31 +1012,31 @@
               "src": "754:67:28"
             },
             "returnParameters": {
-              "id": 16074,
+              "id": 16097,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 16071,
+                  "id": 16094,
                   "name": "result",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16075,
+                  "scope": 16098,
                   "src": "844:13:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_Result_$16047",
+                    "typeIdentifier": "t_enum$_Result_$16070",
                     "typeString": "enum ITransferManager.Result"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 16070,
+                    "id": 16093,
                     "name": "Result",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 16047,
+                    "referencedDeclaration": 16070,
                     "src": "844:6:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_Result_$16047",
+                      "typeIdentifier": "t_enum$_Result_$16070",
                       "typeString": "enum ITransferManager.Result"
                     }
                   },
@@ -1045,10 +1045,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16073,
+                  "id": 16096,
                   "name": "partition",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16075,
+                  "scope": 16098,
                   "src": "859:17:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1057,7 +1057,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 16072,
+                    "id": 16095,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "859:7:28",
@@ -1072,7 +1072,7 @@
               ],
               "src": "843:34:28"
             },
-            "scope": 16087,
+            "scope": 16110,
             "src": "731:147:28",
             "stateMutability": "view",
             "superFunction": null,
@@ -1081,22 +1081,22 @@
           {
             "body": null,
             "documentation": "@notice return the amount of tokens for a given user as per the partition\n@param _partition Identifier\n@param _tokenHolder Whom token amount need to query\n@param _additionalBalance It is the `_value` that transfer during transfer/transferFrom function call",
-            "id": 16086,
+            "id": 16109,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getTokensByPartition",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 16082,
+              "id": 16105,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 16077,
+                  "id": 16100,
                   "name": "_partition",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16086,
+                  "scope": 16109,
                   "src": "1215:18:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1105,7 +1105,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 16076,
+                    "id": 16099,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "1215:7:28",
@@ -1119,10 +1119,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16079,
+                  "id": 16102,
                   "name": "_tokenHolder",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16086,
+                  "scope": 16109,
                   "src": "1235:20:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1131,7 +1131,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 16078,
+                    "id": 16101,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1235:7:28",
@@ -1146,10 +1146,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 16081,
+                  "id": 16104,
                   "name": "_additionalBalance",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16086,
+                  "scope": 16109,
                   "src": "1257:26:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1158,7 +1158,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 16080,
+                    "id": 16103,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1257:7:28",
@@ -1174,15 +1174,15 @@
               "src": "1214:70:28"
             },
             "returnParameters": {
-              "id": 16085,
+              "id": 16108,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 16084,
+                  "id": 16107,
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 16086,
+                  "scope": 16109,
                   "src": "1307:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1191,7 +1191,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 16083,
+                    "id": 16106,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1307:7:28",
@@ -1206,14 +1206,14 @@
               ],
               "src": "1306:16:28"
             },
-            "scope": 16087,
+            "scope": 16110,
             "src": "1185:138:28",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 16088,
+        "scope": 16111,
         "src": "102:1224:28"
       }
     ],
@@ -1225,7 +1225,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-07-19T14:53:14.640Z",
+  "updatedAt": "2019-09-03T13:52:34.347Z",
   "devdoc": {
     "methods": {
       "getTokensByPartition(bytes32,address,uint256)": {

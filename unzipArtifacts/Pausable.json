@@ -281,10 +281,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        58715,
-                        58716
+                        60446,
+                        60447
                       ],
-                      "referencedDeclaration": 58716,
+                      "referencedDeclaration": 60447,
                       "src": "378:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -386,10 +386,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        58715,
-                        58716
+                        60446,
+                        60447
                       ],
-                      "referencedDeclaration": 58716,
+                      "referencedDeclaration": 60447,
                       "src": "572:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -503,7 +503,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 58712,
+                          "referencedDeclaration": 60443,
                           "src": "867:3:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -677,7 +677,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 58712,
+                          "referencedDeclaration": 60443,
                           "src": "1126:3:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1024,10 +1024,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        58715,
-                        58716
+                        60446,
+                        60447
                       ],
-                      "referencedDeclaration": 58716,
+                      "referencedDeclaration": 60447,
                       "src": "378:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1129,10 +1129,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        58715,
-                        58716
+                        60446,
+                        60447
                       ],
-                      "referencedDeclaration": 58716,
+                      "referencedDeclaration": 60447,
                       "src": "572:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1246,7 +1246,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 58712,
+                          "referencedDeclaration": 60443,
                           "src": "867:3:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1420,7 +1420,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 58712,
+                          "referencedDeclaration": 60443,
                           "src": "1126:3:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1538,7 +1538,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-07-19T14:53:14.380Z",
+  "updatedAt": "2019-09-03T13:52:34.358Z",
   "devdoc": {
     "methods": {},
     "title": "Utility contract to allow pausing and unpausing of certain functions"

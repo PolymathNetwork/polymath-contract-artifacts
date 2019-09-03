@@ -14,6 +14,50 @@
       "type": "event"
     },
     {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "_tokens",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "_preMint",
+          "type": "bool"
+        }
+      ],
+      "name": "RevokePreMintFlag",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "_tokens",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "_preMint",
+          "type": "bool"
+        }
+      ],
+      "name": "AllowPreMintFlag",
+      "type": "event"
+    },
+    {
       "constant": true,
       "inputs": [],
       "name": "getTokensSold",
@@ -60,16 +104,16 @@
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity 0.5.8;\n\n/**\n * @title Interface to be implemented by all STO modules\n */\ninterface ISTO {\n\n    enum FundRaiseType {ETH, POLY, SC}\n\n    // Event\n    event SetFundRaiseTypes(FundRaiseType[] _fundRaiseTypes);\n\n    /**\n     * @notice Returns the total no. of tokens sold\n     */\n    function getTokensSold() external view returns(uint256 soldTokens);\n\n    /**\n     * @notice Returns funds raised by the STO\n     */\n    function getRaised(FundRaiseType _fundRaiseType) external view returns(uint256 raisedAmount);\n\n    /**\n     * @notice Pause (overridden function)\n     * @dev Only securityToken owner restriction applied on the super function\n     */\n    function pause() external;\n\n}\n",
+  "source": "pragma solidity 0.5.8;\n\n/**\n * @title Interface to be implemented by all STO modules\n */\ninterface ISTO {\n\n    enum FundRaiseType {ETH, POLY, SC}\n\n    // Event\n    event SetFundRaiseTypes(FundRaiseType[] _fundRaiseTypes);\n\n    event RevokePreMintFlag(address indexed _owner, uint256 _tokens, bool _preMint);\n\n    event AllowPreMintFlag(address indexed _owner, uint256 _tokens, bool _preMint);\n\n    /**\n     * @notice Returns the total no. of tokens sold\n     */\n    function getTokensSold() external view returns(uint256 soldTokens);\n\n    /**\n     * @notice Returns funds raised by the STO\n     */\n    function getRaised(FundRaiseType _fundRaiseType) external view returns(uint256 raisedAmount);\n\n    /**\n     * @notice Pause (overridden function)\n     * @dev Only securityToken owner restriction applied on the super function\n     */\n    function pause() external;\n\n}\n",
   "sourcePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/interfaces/ISTO.sol",
   "ast": {
     "absolutePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/interfaces/ISTO.sol",
     "exportedSymbols": {
       "ISTO": [
-        14539
+        14555
       ]
     },
-    "id": 14540,
+    "id": 14556,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -88,9 +132,9 @@
         "contractKind": "interface",
         "documentation": "@title Interface to be implemented by all STO modules",
         "fullyImplemented": false,
-        "id": 14539,
+        "id": 14555,
         "linearizedBaseContracts": [
-          14539
+          14555
         ],
         "name": "ISTO",
         "nodeType": "ContractDefinition",
@@ -177,31 +221,51 @@
             "src": "164:57:25"
           },
           {
-            "body": null,
-            "documentation": "@notice Returns the total no. of tokens sold",
-            "id": 14528,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "getTokensSold",
-            "nodeType": "FunctionDefinition",
+            "anonymous": false,
+            "documentation": null,
+            "id": 14531,
+            "name": "RevokePreMintFlag",
+            "nodeType": "EventDefinition",
             "parameters": {
-              "id": 14524,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "317:2:25"
-            },
-            "returnParameters": {
-              "id": 14527,
+              "id": 14530,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14526,
-                  "name": "soldTokens",
+                  "id": 14525,
+                  "indexed": true,
+                  "name": "_owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14528,
-                  "src": "342:18:25",
+                  "scope": 14531,
+                  "src": "251:22:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 14524,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "251:7:25",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14527,
+                  "indexed": false,
+                  "name": "_tokens",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14531,
+                  "src": "275:15:25",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -209,10 +273,184 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 14525,
+                    "id": 14526,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "342:7:25",
+                    "src": "275:7:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14529,
+                  "indexed": false,
+                  "name": "_preMint",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14531,
+                  "src": "292:13:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 14528,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "292:4:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "250:56:25"
+            },
+            "src": "227:80:25"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 14539,
+            "name": "AllowPreMintFlag",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 14538,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14533,
+                  "indexed": true,
+                  "name": "_owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14539,
+                  "src": "336:22:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 14532,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "336:7:25",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14535,
+                  "indexed": false,
+                  "name": "_tokens",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14539,
+                  "src": "360:15:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 14534,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "360:7:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14537,
+                  "indexed": false,
+                  "name": "_preMint",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14539,
+                  "src": "377:13:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 14536,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "377:4:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "335:56:25"
+            },
+            "src": "313:79:25"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Returns the total no. of tokens sold",
+            "id": 14544,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTokensSold",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14540,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "488:2:25"
+            },
+            "returnParameters": {
+              "id": 14543,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14542,
+                  "name": "soldTokens",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14544,
+                  "src": "513:18:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 14541,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "513:7:25",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -222,10 +460,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "341:20:25"
+              "src": "512:20:25"
             },
-            "scope": 14539,
-            "src": "295:67:25",
+            "scope": 14555,
+            "src": "466:67:25",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
@@ -233,23 +471,23 @@
           {
             "body": null,
             "documentation": "@notice Returns funds raised by the STO",
-            "id": 14535,
+            "id": 14551,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getRaised",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14531,
+              "id": 14547,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14530,
+                  "id": 14546,
                   "name": "_fundRaiseType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14535,
-                  "src": "450:28:25",
+                  "scope": 14551,
+                  "src": "621:28:25",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -258,11 +496,11 @@
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 14529,
+                    "id": 14545,
                     "name": "FundRaiseType",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 14518,
-                    "src": "450:13:25",
+                    "src": "621:13:25",
                     "typeDescriptions": {
                       "typeIdentifier": "t_enum$_FundRaiseType_$14518",
                       "typeString": "enum ISTO.FundRaiseType"
@@ -272,19 +510,19 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "449:30:25"
+              "src": "620:30:25"
             },
             "returnParameters": {
-              "id": 14534,
+              "id": 14550,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14533,
+                  "id": 14549,
                   "name": "raisedAmount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14535,
-                  "src": "502:20:25",
+                  "scope": 14551,
+                  "src": "673:20:25",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -292,10 +530,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 14532,
+                    "id": 14548,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "502:7:25",
+                    "src": "673:7:25",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -305,10 +543,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "501:22:25"
+              "src": "672:22:25"
             },
-            "scope": 14539,
-            "src": "431:93:25",
+            "scope": 14555,
+            "src": "602:93:25",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
@@ -316,45 +554,45 @@
           {
             "body": null,
             "documentation": "@notice Pause (overridden function)\n@dev Only securityToken owner restriction applied on the super function",
-            "id": 14538,
+            "id": 14554,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "pause",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14536,
+              "id": 14552,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "682:2:25"
+              "src": "853:2:25"
             },
             "returnParameters": {
-              "id": 14537,
+              "id": 14553,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "693:0:25"
+              "src": "864:0:25"
             },
-            "scope": 14539,
-            "src": "668:26:25",
+            "scope": 14555,
+            "src": "839:26:25",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 14540,
-        "src": "89:608:25"
+        "scope": 14556,
+        "src": "89:779:25"
       }
     ],
-    "src": "0:698:25"
+    "src": "0:869:25"
   },
   "legacyAST": {
     "absolutePath": "/Users/federicoelgarte/Polymath/polymath-core/contracts/interfaces/ISTO.sol",
     "exportedSymbols": {
       "ISTO": [
-        14539
+        14555
       ]
     },
-    "id": 14540,
+    "id": 14556,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -373,9 +611,9 @@
         "contractKind": "interface",
         "documentation": "@title Interface to be implemented by all STO modules",
         "fullyImplemented": false,
-        "id": 14539,
+        "id": 14555,
         "linearizedBaseContracts": [
-          14539
+          14555
         ],
         "name": "ISTO",
         "nodeType": "ContractDefinition",
@@ -462,31 +700,51 @@
             "src": "164:57:25"
           },
           {
-            "body": null,
-            "documentation": "@notice Returns the total no. of tokens sold",
-            "id": 14528,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "getTokensSold",
-            "nodeType": "FunctionDefinition",
+            "anonymous": false,
+            "documentation": null,
+            "id": 14531,
+            "name": "RevokePreMintFlag",
+            "nodeType": "EventDefinition",
             "parameters": {
-              "id": 14524,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "317:2:25"
-            },
-            "returnParameters": {
-              "id": 14527,
+              "id": 14530,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14526,
-                  "name": "soldTokens",
+                  "id": 14525,
+                  "indexed": true,
+                  "name": "_owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14528,
-                  "src": "342:18:25",
+                  "scope": 14531,
+                  "src": "251:22:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 14524,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "251:7:25",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14527,
+                  "indexed": false,
+                  "name": "_tokens",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14531,
+                  "src": "275:15:25",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -494,10 +752,184 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 14525,
+                    "id": 14526,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "342:7:25",
+                    "src": "275:7:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14529,
+                  "indexed": false,
+                  "name": "_preMint",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14531,
+                  "src": "292:13:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 14528,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "292:4:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "250:56:25"
+            },
+            "src": "227:80:25"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 14539,
+            "name": "AllowPreMintFlag",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 14538,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14533,
+                  "indexed": true,
+                  "name": "_owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14539,
+                  "src": "336:22:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 14532,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "336:7:25",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14535,
+                  "indexed": false,
+                  "name": "_tokens",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14539,
+                  "src": "360:15:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 14534,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "360:7:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14537,
+                  "indexed": false,
+                  "name": "_preMint",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14539,
+                  "src": "377:13:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 14536,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "377:4:25",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "335:56:25"
+            },
+            "src": "313:79:25"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Returns the total no. of tokens sold",
+            "id": 14544,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTokensSold",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14540,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "488:2:25"
+            },
+            "returnParameters": {
+              "id": 14543,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14542,
+                  "name": "soldTokens",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14544,
+                  "src": "513:18:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 14541,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "513:7:25",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -507,10 +939,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "341:20:25"
+              "src": "512:20:25"
             },
-            "scope": 14539,
-            "src": "295:67:25",
+            "scope": 14555,
+            "src": "466:67:25",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
@@ -518,23 +950,23 @@
           {
             "body": null,
             "documentation": "@notice Returns funds raised by the STO",
-            "id": 14535,
+            "id": 14551,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getRaised",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14531,
+              "id": 14547,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14530,
+                  "id": 14546,
                   "name": "_fundRaiseType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14535,
-                  "src": "450:28:25",
+                  "scope": 14551,
+                  "src": "621:28:25",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -543,11 +975,11 @@
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 14529,
+                    "id": 14545,
                     "name": "FundRaiseType",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 14518,
-                    "src": "450:13:25",
+                    "src": "621:13:25",
                     "typeDescriptions": {
                       "typeIdentifier": "t_enum$_FundRaiseType_$14518",
                       "typeString": "enum ISTO.FundRaiseType"
@@ -557,19 +989,19 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "449:30:25"
+              "src": "620:30:25"
             },
             "returnParameters": {
-              "id": 14534,
+              "id": 14550,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14533,
+                  "id": 14549,
                   "name": "raisedAmount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14535,
-                  "src": "502:20:25",
+                  "scope": 14551,
+                  "src": "673:20:25",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -577,10 +1009,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 14532,
+                    "id": 14548,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "502:7:25",
+                    "src": "673:7:25",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -590,10 +1022,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "501:22:25"
+              "src": "672:22:25"
             },
-            "scope": 14539,
-            "src": "431:93:25",
+            "scope": 14555,
+            "src": "602:93:25",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
@@ -601,36 +1033,36 @@
           {
             "body": null,
             "documentation": "@notice Pause (overridden function)\n@dev Only securityToken owner restriction applied on the super function",
-            "id": 14538,
+            "id": 14554,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "pause",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14536,
+              "id": 14552,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "682:2:25"
+              "src": "853:2:25"
             },
             "returnParameters": {
-              "id": 14537,
+              "id": 14553,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "693:0:25"
+              "src": "864:0:25"
             },
-            "scope": 14539,
-            "src": "668:26:25",
+            "scope": 14555,
+            "src": "839:26:25",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 14540,
-        "src": "89:608:25"
+        "scope": 14556,
+        "src": "89:779:25"
       }
     ],
-    "src": "0:698:25"
+    "src": "0:869:25"
   },
   "compiler": {
     "name": "solc",
@@ -638,7 +1070,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-07-19T14:53:14.628Z",
+  "updatedAt": "2019-09-03T13:52:34.332Z",
   "devdoc": {
     "methods": {
       "pause()": {

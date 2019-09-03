@@ -34,6 +34,7 @@ import * as VestingEscrowWallet from "../artifacts/VestingEscrowWallet.json";
 import * as VolumeRestrictionTransferManager from "../artifacts/VolumeRestrictionTM.json";
 import * as WeightedVoteCheckpoint from "../artifacts/WeightedVoteCheckpoint.json";
 import * as PLCRVotingCheckpoint from "../artifacts/PLCRVotingCheckpoint.json";
+import * as RestrictedPartialSaleTM from "../artifacts/RestrictedPartialSaleTM.json";
 
 export {
   BlacklistTransferManager,
@@ -71,5 +72,6 @@ export {
   VestingEscrowWallet,
   VolumeRestrictionTransferManager,
   WeightedVoteCheckpoint,
-  PLCRVotingCheckpoint
+  PLCRVotingCheckpoint,
+  RestrictedPartialSaleTM
 };
