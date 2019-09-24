@@ -35,6 +35,7 @@ import * as VolumeRestrictionTransferManager from "../artifacts/VolumeRestrictio
 import * as WeightedVoteCheckpoint from "../artifacts/WeightedVoteCheckpoint.json";
 import * as PLCRVotingCheckpoint from "../artifacts/PLCRVotingCheckpoint.json";
 import * as RestrictedPartialSaleTM from "../artifacts/RestrictedPartialSaleTM.json";
+import * as AdvancedPLCRVotingCheckpoint from "../artifacts/AdvancedPLCRVotingCheckpoint.json";
 
 export {
   BlacklistTransferManager,
@@ -73,5 +74,6 @@ export {
   VolumeRestrictionTransferManager,
   WeightedVoteCheckpoint,
   PLCRVotingCheckpoint,
-  RestrictedPartialSaleTM
+  RestrictedPartialSaleTM,
+  AdvancedPLCRVotingCheckpoint
 };
