@@ -1,3 +1,5 @@
+![Polymath logo](Polymath.png)
+
 ## @polymathnetwork/contract-artifacts
 
 Smart contract compilation artifacts for Polymath v3.0.0
