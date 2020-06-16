@@ -40,8 +40,9 @@
       "type": "event"
     }
   ],
-  "bytecode": "0x60806040526000805460ff19169055348015601957600080fd5b506098806100286000396000f3fe6080604052348015600f57600080fd5b50600436106044577c010000000000000000000000000000000000000000000000000000000060003504635c975abb81146049575b600080fd5b604f6063565b604080519115158252519081900360200190f35b60005460ff168156fea165627a7a72305820c197201ba2dbf6ff93160e391d0694a8dd3324fd7d69106e6d1619860be43a0c0029",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b50600436106044577c010000000000000000000000000000000000000000000000000000000060003504635c975abb81146049575b600080fd5b604f6063565b604080519115158252519081900360200190f35b60005460ff168156fea165627a7a72305820c197201ba2dbf6ff93160e391d0694a8dd3324fd7d69106e6d1619860be43a0c0029",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"paused\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Pause\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Unpause\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{},\"title\":\"Utility contract to allow pausing and unpausing of certain functions\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/federicoelgarte/Polymath/polymath-core/contracts/Pausable.sol\":\"Pausable\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/federicoelgarte/Polymath/polymath-core/contracts/Pausable.sol\":{\"keccak256\":\"0x135291a6bf5fb3fe3eb43632609f03353a06b647983e0951e60a6bd48fab3aad\",\"urls\":[\"bzzr://f8a5b7c699087985b56e58898f166ea3b0c9f9ed42ff2f59caa69e65e9f836ea\"]}},\"version\":1}",
+  "bytecode": "0x60806040526000805460ff19169055348015601957600080fd5b50607c806100286000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c80635c975abb14602d575b600080fd5b60336047565b604080519115158252519081900360200190f35b60005460ff168156fea165627a7a723058201c5419b487c238327932c858fdb90c5b7947fe54342b1f028edab29d95a2d6760029",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c80635c975abb14602d575b600080fd5b60336047565b604080519115158252519081900360200190f35b60005460ff168156fea165627a7a723058201c5419b487c238327932c858fdb90c5b7947fe54342b1f028edab29d95a2d6760029",
   "sourceMap": "111:1036:3:-;;;227:5;206:26;;-1:-1:-1;;206:26:3;;;111:1036;5:2:-1;;;;30:1;27;20:12;5:2;111:1036:3;;;;;;;",
   "deployedSourceMap": "111:1036:3:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;111:1036:3;;;;;;;;;;;;;;;;;;;206:26;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;:::o",
   "source": "pragma solidity 0.5.8;\n\n/**\n * @title Utility contract to allow pausing and unpausing of certain functions\n */\ncontract Pausable {\n    event Pause(address account);\n    event Unpause(address account);\n\n    bool public paused = false;\n\n    /**\n    * @notice Modifier to make a function callable only when the contract is not paused.\n    */\n    modifier whenNotPaused() {\n        require(!paused, \"Contract is paused\");\n        _;\n    }\n\n    /**\n    * @notice Modifier to make a function callable only when the contract is paused.\n    */\n    modifier whenPaused() {\n        require(paused, \"Contract is not paused\");\n        _;\n    }\n\n    /**\n    * @notice Called by the owner to pause, triggers stopped state\n    */\n    function _pause() internal whenNotPaused {\n        paused = true;\n        /*solium-disable-next-line security/no-block-members*/\n        emit Pause(msg.sender);\n    }\n\n    /**\n    * @notice Called by the owner to unpause, returns to normal state\n    */\n    function _unpause() internal whenPaused {\n        paused = false;\n        /*solium-disable-next-line security/no-block-members*/\n        emit Unpause(msg.sender);\n    }\n\n}\n",
@@ -281,10 +282,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        58715,
-                        58716
+                        64044,
+                        64045
                       ],
-                      "referencedDeclaration": 58716,
+                      "referencedDeclaration": 64045,
                       "src": "378:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -386,10 +387,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        58715,
-                        58716
+                        64044,
+                        64045
                       ],
-                      "referencedDeclaration": 58716,
+                      "referencedDeclaration": 64045,
                       "src": "572:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -503,7 +504,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 58712,
+                          "referencedDeclaration": 64041,
                           "src": "867:3:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -677,7 +678,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 58712,
+                          "referencedDeclaration": 64041,
                           "src": "1126:3:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1024,10 +1025,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        58715,
-                        58716
+                        64044,
+                        64045
                       ],
-                      "referencedDeclaration": 58716,
+                      "referencedDeclaration": 64045,
                       "src": "378:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1129,10 +1130,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        58715,
-                        58716
+                        64044,
+                        64045
                       ],
-                      "referencedDeclaration": 58716,
+                      "referencedDeclaration": 64045,
                       "src": "572:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1246,7 +1247,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 58712,
+                          "referencedDeclaration": 64041,
                           "src": "867:3:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1420,7 +1421,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 58712,
+                          "referencedDeclaration": 64041,
                           "src": "1126:3:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1537,8 +1538,8 @@
     "version": "0.5.8+commit.23d335f2.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.2",
-  "updatedAt": "2019-07-19T14:53:14.380Z",
+  "schemaVersion": "3.0.12",
+  "updatedAt": "2019-09-24T16:14:03.674Z",
   "devdoc": {
     "methods": {},
     "title": "Utility contract to allow pausing and unpausing of certain functions"

@@ -2,7 +2,7 @@
 
 ## @polymathnetwork/contract-artifacts
 
-Smart contract compilation artifacts for Polymath v3.0.0
+Smart contract compilation artifacts for Polymath v3.1.0
 
 ## Installation
 

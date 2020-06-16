@@ -1,6 +1,6 @@
 {
   "name": "@polymathnetwork/contract-artifacts",
-  "version": "3.0.0",
+  "version": "3.1.0-beta.3",
   "engines": {
     "node": ">=6.12"
   },
@@ -8,8 +8,7 @@
   "main": "lib/src/index.js",
   "license": "Apache-2.0",
   "files": [
-    "lib/**/*",
-    "artifacts/*"
+    "lib/*"
   ],
   "directories": {
     "test": "test"
